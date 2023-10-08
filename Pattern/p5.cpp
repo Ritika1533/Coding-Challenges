@@ -2,8 +2,8 @@
 using namespace std;
 int main()
 {
-    int row;
-    cout << "enter the number of row" << endl;
+    int row, count = 1;
+    cout << "enter the no of row" << endl;
     cin >> row;
     int i = 1;
     while (i <= row)
@@ -11,19 +11,17 @@ int main()
         int j = 1;
         while (j <= row)
         {
-            cout << i;
+            cout << count << "\t";
+            count++;
             j++;
         }
         cout << endl;
         i++;
     }
 }
-/*
-1111111
-2222222
-3333333
-4444444
-5555555
-6666666
-7777777
-*/
+/*enter the no of row
+
+3
+123
+456
+789*/

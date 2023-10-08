@@ -2,29 +2,28 @@
 using namespace std;
 int main()
 {
-    int row;
-    cout << "enter the no. of row" << endl;
-    cin >> row;
-
+    int n;
+    cout << "enter the no of terms" << endl;
+    cin >> n;
     int i = 1;
-    while (i <= row)
+    while (i <= n)
     {
         int j = 1;
-        while (j <= row)
+        while (j <= i)
         {
             cout << "*";
             j++;
         }
-        i++;
         cout << endl;
+        i++;
     }
 }
-/*row=5;
-
+/*
+enter the no of terms
+5
+*
+**
+***
+****
 *****
-*****
-*****
-*****
-*****
-
 */
