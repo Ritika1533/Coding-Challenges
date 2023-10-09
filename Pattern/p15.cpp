@@ -6,15 +6,16 @@ int main()
     cout << "enter the number of terms:  ";
     cin >> n;
     int i = 1;
-
+    char ch = 'A';
     while (i <= n)
     {
         int j = 1;
         while (j <= i)
         {
-            char ch = 'A' + i - 1;
+
             cout << ch << " ";
             j++;
+            ch++;
         }
         i++;
         cout << endl;
@@ -23,7 +24,7 @@ int main()
 /*
 enter the number of terms:  4
 A
-B B
-C C C
-D D D D
+B C
+D E F
+G H I J
 */
