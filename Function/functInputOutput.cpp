@@ -29,4 +29,18 @@ int main(){
 }
 //15
 
+//question 3
+#include<iostream>
+using namespace std;
+int update(int a){
+    int ans=a*a;
+    return ans;
+}
+int main(){
+    int a=14;
+    a=update(a);
+    cout<<a<<endl;
+}
+//196
+
 */
