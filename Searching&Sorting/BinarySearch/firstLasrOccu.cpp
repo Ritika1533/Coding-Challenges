@@ -1,14 +1,13 @@
+
 #include <iostream>
 using namespace std;
-int firstOccurrence(int array[], int size, int key)
+int first(int array[], int size, int key)
 {
-    int start = 0;
-    int end = size - 1;
-    int mid = start + (end - start) / 2;
-    int ans = -1;
+    int start = 0, end = size - 1, ans = -1;
+
     while (start <= end)
     {
-
+        int mid = start + (end - start) / 2;
         if (array[mid] == key)
         {
             ans = mid;
@@ -22,20 +21,18 @@ int firstOccurrence(int array[], int size, int key)
         {
             end = mid - 1;
         }
-        int mid = start + (end - start) / 2;
     }
     return ans;
 }
 // last occurance
-int lastOccurrence(int array[], int size, int key)
+int last(int array[], int size, int key)
 {
     int start = 0;
     int end = size - 1;
-    int mid = start + (end - start) / 2;
     int ans = -1;
     while (start <= end)
     {
-
+        int mid = start + (end - start) / 2;
         if (array[mid] == key)
         {
             ans = mid;
@@ -49,7 +46,6 @@ int lastOccurrence(int array[], int size, int key)
         {
             end = mid - 1;
         }
-        int mid = start + (end - start) / 2;
     }
     return ans;
 }
@@ -57,11 +53,9 @@ int main()
 {
     int array[11] = {0, 3, 3, 3, 3, 3, 4, 4, 4, 5, 9};
     int key = 4;
-    int first, last;
-    cout << "first occurrance of 4 is at index :";
-    first = firstOccurrence(array, 11, 3);
-    cout << first;
-    cout << endl;
-    cout << "last occurrance of 4 is at index :";
-    cout << lastOccurrence(array, 11, 3);
+    int firstIndex = first(array, 10, 4);
+    cout << "First Occurrence = " << firstIndex;
+    int lastIndex = last(array, 10, 4);
+    cout << "\nLast Occurrence = " << lastIndex;
+    cout << "\n TOTAL number of occurrance=" << lastIndex - firstIndex + 1;
 }
