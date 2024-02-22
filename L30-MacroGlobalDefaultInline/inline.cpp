@@ -12,7 +12,6 @@ int main()
     cout << ans << endl;
     a = a + 4;
     b = b - 2;
-
     ans = getMax(a, b); //(a>b)?a:b;
     cout << ans << endl;
 }
