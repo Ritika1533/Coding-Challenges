@@ -1,3 +1,5 @@
+//USING TWO POINTER
+
 #include <iostream>
 using namespace std;
 void reverseArray(int *arr, int i, int j)
