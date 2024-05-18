@@ -1,19 +1,23 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 using namespace std;
+
 class Node
 {
 public:
     int data;
     Node *next;
     Node *prev;
-    // constructor
+
+    // Constructor
     Node(int data)
     {
         this->data = data;
         this->next = nullptr;
         this->prev = nullptr;
     }
+
     Node(int data, Node *next, Node *prev)
     {
         this->data = data;
@@ -21,7 +25,8 @@ public:
         this->prev = prev;
     }
 };
-void printList(Node *&head)
+
+void printList(Node *head)
 {
     Node *temp = head;
     while (temp != nullptr)
@@ -31,7 +36,8 @@ void printList(Node *&head)
     }
     cout << endl;
 }
-int lengthList(Node *&head)
+
+int lengthList(Node *head)
 {
     Node *temp = head;
     int count = 0;
@@ -42,41 +48,54 @@ int lengthList(Node *&head)
     }
     return count;
 }
-Node *deleteAtHead(Node *&head)
-{
-    if (head == NULL || head->next == NULL)
-        return NULL;
-    Node *temp = head;
-    head = head->next;
-    head->prev = nullptr;
-    free(temp);
-    return head;
-}
+
 Node *insertAtHead(Node *&head, int d)
 {
     Node *temp = new Node(d);
     temp->next = head;
-    head->prev = temp;
+    if (head != nullptr)
+    {
+        head->prev = temp;
+    }
     head = temp;
     return head;
 }
+
+Node *reverseDoublyLinkedList(Node *&head)
+{
+    Node *temp = head;
+    stack<int> s;
+    while (temp != NULL)
+    {
+        s.push(temp->data);
+        temp = temp->next;
+    }
+    temp = head;
+    while (temp != NULL)
+    {
+        temp->data = s.top();
+        s.pop();
+        temp = temp->next;
+    }
+    return head;
+}
+
 int main()
 {
-    vector<int> arr = {3, 7, 5, 8};
-    Node *n1 = new Node(arr[3]);
+    vector<int> arr = {1, 2, 3, 4, 5, 6};
+    Node *n1 = new Node(arr[5]);
     Node *head = n1;
+    insertAtHead(head, arr[4]);
+    insertAtHead(head, arr[3]);
     insertAtHead(head, arr[2]);
     insertAtHead(head, arr[1]);
     insertAtHead(head, arr[0]);
-    cout << "\nlength of list :" << lengthList(head) << endl;
+    cout << "doubly linked list is : ";
     printList(head);
-    deleteAtHead(head);
-    cout << "\nlength of list :" << lengthList(head) << endl;
+    reverseDoublyLinkedList(head);
+    cout << "Reversed doubly linked list is : ";
     printList(head);
+    return 0;
 }
-/*
-length of list :4
-3 7 5 8
-
-length of list :3
-7 5 8*/
+/*doubly linked list is : 1 2 3 4 5 6
+Reversed doubly linked list is : 6 5 4 3 2 1*/

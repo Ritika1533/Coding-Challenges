@@ -42,22 +42,43 @@ int lengthList(Node *&head)
     }
     return count;
 }
-Node *deleteAtHead(Node *&head)
+
+Node *deleteAtTail(Node *&head)
 {
     if (head == NULL || head->next == NULL)
         return NULL;
-    Node *temp = head;
-    head = head->next;
-    head->prev = nullptr;
-    free(temp);
+    Node *tail = head;
+    while (tail->next != nullptr)
+    {
+        tail = tail->next;
+    }
+    Node *temp = tail->prev;
+    temp->next = nullptr;
+    tail->prev = nullptr;
+    free(tail);
     return head;
 }
+
 Node *insertAtHead(Node *&head, int d)
 {
     Node *temp = new Node(d);
     temp->next = head;
     head->prev = temp;
     head = temp;
+    return head;
+}
+
+Node *insertAtTail(Node *&head, int d)
+{
+    Node *temp = new Node(d);
+    Node *tail = head;
+    while (tail->next != nullptr)
+    {
+        tail = tail->next;
+    }
+    tail->next = temp;
+    temp->prev = tail;
+    tail = temp;
     return head;
 }
 int main()
@@ -70,8 +91,10 @@ int main()
     insertAtHead(head, arr[0]);
     cout << "\nlength of list :" << lengthList(head) << endl;
     printList(head);
-    deleteAtHead(head);
+    deleteAtTail(head);
     cout << "\nlength of list :" << lengthList(head) << endl;
+    printList(head);
+    insertAtTail(head, 77);
     printList(head);
 }
 /*
@@ -79,4 +102,5 @@ length of list :4
 3 7 5 8
 
 length of list :3
-7 5 8*/
+3 7 5
+3 7 5 77*/
